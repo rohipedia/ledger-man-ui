@@ -1,0 +1,27 @@
+.main-header__logo {
+    height: 90px;
+    width: 160px;
+}
+
+.login-form {
+    float: right;
+}
+
+.login-form__field {
+    width: 100%;
+}
+
+.login-form__button {
+    float: right;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 16px;
+    margin: 12px;
+}
+
+.form-container > * {
+    width: 100%;
+}

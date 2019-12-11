@@ -1,0 +1,19 @@
+.progress-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    width: 85vw;
+}
+
+.progress-bar {
+    height: 12px;
+}
+
+.progress-value {
+    float: right;
+}
+
+.progress-text {
+    display: block;
+    margin-top: 2px;
+}

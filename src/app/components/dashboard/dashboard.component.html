@@ -1,0 +1,15 @@
+<section class="progress-section">
+    <div class="offset-lg-7 col-5">
+        <div class="progress-text">
+            <span class="progress-label">Progress</span>
+            <span class="progress-value">{{ value }}% Completed</span>
+        </div>
+        <mat-progress-bar
+            class="progress-bar"
+            [style]="{'height': '16px'}"
+            [color]="color"
+            [mode]="mode"
+            [value]="value"
+            [bufferValue]="bufferValue"></mat-progress-bar>
+    </div>
+</section>

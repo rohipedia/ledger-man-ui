@@ -1,0 +1,16 @@
+<div class="">
+    <header class="header">
+        <div class="row">
+            <img class="main-header__logo"
+                [src]="sprintUrl"
+                alt="">
+            <h2 class="col-4 header--title"></h2>
+        </div>
+    </header>
+    <div id="wrapper">
+        <app-sidebar></app-sidebar>
+        <div style="color: black;">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
