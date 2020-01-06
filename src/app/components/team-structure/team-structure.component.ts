@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TreeNode } from 'primeng/api';
-import teams from './team-structure.js';
+import { ActivatedRoute, Data } from '@angular/router';
 
 @Component({
   selector: 'app-team-structure',
@@ -8,13 +8,16 @@ import teams from './team-structure.js';
   styleUrls: ['./team-structure.component.scss']
 })
 export class TeamStructureComponent implements OnInit {
+  
+  public data: TreeNode[];
 
-  constructor() { }
-
-  data: TreeNode[];
-
+  constructor(private activatedRoute: ActivatedRoute) {
+  }
+  
   ngOnInit() {
-    this.data = teams;
+    this.activatedRoute.data.subscribe((data: Data) => {
+      this.data = data['teams'];
+    });
   }
 
   onNodeSelect(event) {

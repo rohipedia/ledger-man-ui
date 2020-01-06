@@ -7,6 +7,7 @@ import { TeamStructureComponent } from './components/team-structure/team-structu
 import { TechStackComponent } from './components/tech-stack/tech-stack.component';
 import { SprintOverviewComponent } from './components/sprint-overview/sprint-overview.component';
 import { AuthenticationService } from './services/authentication.service';
+import { TeamsService } from './services/teams/teams.service';
 
 
 const routes: Routes = [
@@ -16,7 +17,11 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'sprint-overview', component: SprintOverviewComponent },
-      { path: 'team-structure', component: TeamStructureComponent },
+      { path: 'team-structure', component: TeamStructureComponent, 
+        resolve: {
+          teams: TeamsService
+        }
+      },
       { path: 'tech-stack', component: TechStackComponent },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
     ]
