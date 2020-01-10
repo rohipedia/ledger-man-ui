@@ -19,6 +19,15 @@ export class AuthenticationService implements CanActivate {
     });
   }
 
+  register() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this.loggedIn = false;
+        resolve();
+      }, 2000);
+    });
+  }
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return true;
     // if (this.loggedIn) {

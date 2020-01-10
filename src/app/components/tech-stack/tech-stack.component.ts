@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Technology } from 'src/app/models/technology.model';
+import stubTechnologies from './../../stubs/technology.stubs.js';
 
 @Component({
   selector: 'app-tech-stack',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TechStackComponent implements OnInit {
 
+  public technologies: Technology[] = [];
+
   constructor() { }
 
   ngOnInit() {
+    this.technologies = stubTechnologies;
   }
 
 }

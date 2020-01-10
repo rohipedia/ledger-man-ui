@@ -1,21 +1,21 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion side-nav__custom" id="accordionSidebar">
     <hr class="sidebar-divider my-0">
-    <li class="nav-item active">
-        <a class="nav-link" (click)="routeToPage('dashboard')">
+    <li class="nav-item " (click)="routeToPage('dashboard', $event)">
+        <a class="nav-link" >
             <span>Dashboard</span>
         </a>
     </li>
     <hr class="sidebar-divider">
-    <div class="sidebar-heading">
+    <div class="sidebar-heading sb-heading">
         General
     </div>
-    <li class="nav-item">
-        <a class="nav-link" (click)="routeToPage('sprint-overview')">
+    <li class="nav-item" (click)="routeToPage('sprint-overview', $event)">
+        <a class="nav-link">
             <span>Sprint Overview</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" (click)="routeToPage('tech-stack')">
+    <li class="nav-item" (click)="routeToPage('tech-stack')">
+        <a class="nav-link collapsed">
             <span>Technology Stack</span>
         </a>
     </li>
@@ -24,6 +24,10 @@
             <span>Team Structure</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" (click)="routeToPage('gst-tools')">
+            <span>GST Tools</span>
+        </a>
+    </li>
     <hr class="sidebar-divider">
-    
 </ul>

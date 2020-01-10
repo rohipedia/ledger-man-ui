@@ -9,8 +9,12 @@
     </header>
     <div id="wrapper">
         <app-sidebar></app-sidebar>
-        <div style="color: black;">
-            <router-outlet></router-outlet>
+        <div style="color: black;width: 100%;">
+            <mat-progress-bar *ngIf="loading" color="accent" mode="indeterminate" style="width: 100vw;">
+            </mat-progress-bar>
+            <div style="padding: 20px">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 </div>

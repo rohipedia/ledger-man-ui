@@ -1,25 +1,23 @@
-<div class="container">
-    <header class="main-header">
-        <img class="main-header__logo"
-            [src]="sprintUrl"
-            alt="">
-    </header>
-    <div class="row">
-        <div class="offset-lg-8 col-4 login-form">
-            <div class="form-container">
-                <form novalidate [formGroup]="loginForm">
-                    <mat-form-field class="login-form__field">
-                        <input matInput formControlName="email" placeholder="E-mail ID" type="email">
-                    </mat-form-field>
-                    <mat-form-field class="login-form__field">
-                        <input matInput formControlName="password" placeholder="Password" type="password">
-                    </mat-form-field>
-                    <button class="login-form__button" [disabled]="!loginForm.valid"
-                        mat-raised-button color="primary"
-                        type="submit" (click)="login()" >
-                        Login
-                    </button>
-                </form>
+<div class="row">
+    <div class="offset-lg-8 col-4 login-form">
+        <div class="form-container">
+            <h4>Login here:</h4>
+            <form novalidate [formGroup]="loginForm" (ngSubmit)="login()">
+                <mat-form-field class="login-form__field">
+                    <input matInput formControlName="email" placeholder="E-mail ID" type="email">
+                </mat-form-field>
+                <mat-form-field class="login-form__field">
+                    <input matInput formControlName="password" placeholder="Password" type="password">
+                </mat-form-field>
+                <button class="login-form__button" [disabled]="!loginForm.valid" mat-raised-button color="primary"
+                    type="submit">
+                    Login
+                </button>
+            </form>
+            <hr>
+            <div>
+                <span class="route-links"><a [routerLink]="['/landing', 'register']">Register</a></span>
+                <span class="route-links float-right"><a [routerLink]="['/landing', 'forgotPassword']">Forgot Password?</a></span>
             </div>
         </div>
     </div>

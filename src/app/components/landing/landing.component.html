@@ -1,0 +1,20 @@
+<div class="container">
+    <header class="main-header">
+        <img class="main-header__logo"
+            [src]="sprintUrl"
+            alt="">
+    </header>
+    <section *ngIf="!isOptionSelected">
+        <div class="journey-selector float-right">
+            <button 
+                (click)="optionSelected()"
+                class="btn btn-lg btn-primary block"
+                [routerLink]="['register']">Get Started</button>
+            <button 
+                (click)="optionSelected()"
+                class="btn btn-lg btn-primary block" 
+                [routerLink]="['login']">I already have an account</button>
+        </div>
+    </section>
+    <router-outlet *ngIf="isOptionSelected"></router-outlet>
+</div>

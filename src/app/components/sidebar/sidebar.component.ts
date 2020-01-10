@@ -14,7 +14,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
   }
 
-  public routeToPage(page: string): void {
+  public routeToPage(page: string, event: Event): void {
     this.router.navigate([page], {relativeTo: this.route});
   }
 

@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="offset-lg-8 col-4 login-form">
+        <div class="form-container">
+            <h4>Register</h4>
+            <form novalidate [formGroup]="registrationForm">
+                <mat-form-field class="login-form__field">
+                    <input matInput formControlName="firstName" placeholder="First name" type="text">
+                </mat-form-field>
+                <mat-form-field class="login-form__field">
+                    <input matInput formControlName="lastName" placeholder="Last name" type="text">
+                </mat-form-field>
+                <mat-form-field class="login-form__field">
+                    <input matInput formControlName="email" placeholder="E-mail ID" type="email">
+                </mat-form-field>
+                <mat-form-field class="login-form__field">
+                    <input matInput formControlName="password" placeholder="Password" type="password">
+                </mat-form-field>
+                <button class="login-form__button" [disabled]="!registrationForm.valid" mat-raised-button color="primary"
+                    type="submit" (click)="register()">
+                    Register
+                </button>
+            </form>
+            <hr>
+            <div>
+                <span class="route-links"><a [routerLink]="['/landing', 'login']">Login</a></span> &nbsp;
+                <span class="route-links float-right"><a [routerLink]="['/landing', 'forgotPassword']">Forgot Password?</a></span>
+            </div>
+        </div>
+    </div>
+</div>

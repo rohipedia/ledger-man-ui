@@ -9,11 +9,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material';
-import { MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatCardModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -21,6 +21,12 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TeamStructureComponent } from './components/team-structure/team-structure.component';
 import { TechStackComponent } from './components/tech-stack/tech-stack.component';
 import { SprintOverviewComponent } from './components/sprint-overview/sprint-overview.component';
+import { GstToolsComponent } from './components/gst-tools/gst-tools.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LandingBannersComponent } from './components/banners/landing-banners/landing-banners.component';
+import { MainBannersComponent } from './components/banners/main-banners/main-banners.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +37,13 @@ import { SprintOverviewComponent } from './components/sprint-overview/sprint-ove
     SidebarComponent,
     TeamStructureComponent,
     TechStackComponent,
-    SprintOverviewComponent
+    SprintOverviewComponent,
+    GstToolsComponent,
+    LandingComponent,
+    RegisterComponent,
+    LandingBannersComponent,
+    MainBannersComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +56,9 @@ import { SprintOverviewComponent } from './components/sprint-overview/sprint-ove
     MatProgressBarModule,
     MatInputModule,
     MatButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSnackBarModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
