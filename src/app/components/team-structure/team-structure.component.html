@@ -1,16 +1,4 @@
-<div class="organization-box">
-    <!-- <p-organizationChart [value]="data" selectionMode="single" [(selection)]="selectedNode" (onNodeSelect)="onNodeSelect($event)"
-        styleClass="company">
-        <ng-template let-node pTemplate="person">
-            <div class="node-header ui-corner-top">{{node.label}}</div>
-            <div class="node-content">
-                <div>{{node.data.name}}</div>
-            </div>
-        </ng-template>
-        <ng-template let-node pTemplate="stream">
-            {{node.label}}
-        </ng-template>
-    </p-organizationChart> -->
+<div class="row organization-box">
     <p-tree [value]="data" layout="horizontal" 
         selectionMode="single" [style]="{'border': 'none'}"
         [(selection)]="selectedFile3" ></p-tree>

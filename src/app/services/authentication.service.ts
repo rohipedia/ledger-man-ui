@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { SnackBarService } from './content/snack-bar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class AuthenticationService implements CanActivate {
 
   private loggedIn: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private snackBarService: SnackBarService) { }
 
   login() {
     return new Promise((resolve) => {
@@ -17,6 +18,12 @@ export class AuthenticationService implements CanActivate {
         resolve();
       }, 2000);
     });
+  }
+
+  logout() {
+    this.loggedIn = false;
+    this.router.navigate(['/landing']);
+    this.snackBarService.openSnackbar('Log out Successful...');
   }
 
   register() {
