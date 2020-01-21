@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
         }
       }
     });
+    console.log(this.router.getCurrentNavigation().extras.state);
   }
 
   ngOnInit() {

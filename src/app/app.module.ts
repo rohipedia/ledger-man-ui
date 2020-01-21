@@ -27,6 +27,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LandingBannersComponent } from './components/banners/landing-banners/landing-banners.component';
 import { MainBannersComponent } from './components/banners/main-banners/main-banners.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     OrganizationChartModule,
     TreeModule,

@@ -27,10 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authenticationService.login().then(() => {
-      this.router.navigate(['/main']);
-      this.snackbarService.openSnackbar('Login successful..');
-    });
+    this.authenticationService.login();
   }
 
 }
