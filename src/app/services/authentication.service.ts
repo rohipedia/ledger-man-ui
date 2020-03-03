@@ -11,17 +11,30 @@ import { environment } from '../../environments/environment';
 })
 export class AuthenticationService implements CanActivate {
 
-  private loggedIn: boolean = false;
+  private loggedIn: boolean = true;
   private API_URL = environment.API_URL;
 
-  constructor(private router: Router, private httpClient: HttpClient, private snackBarService: SnackBarService) { }
+  constructor(
+    private router: Router,
+    private httpClient: HttpClient,
+    private snackBarService: SnackBarService) { }
 
-  login() {
-    this.httpClient.get(`${this.API_URL}/login`).subscribe((response: Response) => {
-      this.router.navigate(['/main'], {state: {data: response}});
+  login(req: any) {
+    const temporarySuccess = (error) => {
+      this.router.navigate(['/main'], { state: error.name });
       this.loggedIn = true;
       this.snackBarService.openSnackbar('Login successful..');
-    });
+    }
+    const success = (response) => {
+      this.router.navigate(['/main'], { state: response });
+      this.loggedIn = true;
+      this.snackBarService.openSnackbar('Login successful..');
+    }
+    const failure = (error) => {
+      // temporarySuccess(error);
+      this.snackBarService.openSnackbar('Login failed..');
+    }
+    this.httpClient.post(`${this.API_URL}/login`, req).subscribe(success, failure);    
   }
 
   logout() {

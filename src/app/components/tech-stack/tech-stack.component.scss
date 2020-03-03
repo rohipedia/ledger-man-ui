@@ -1,5 +1,5 @@
 .tech-stack__main {
-    
+    height: 80vh;
 }
 
 .tech-stack-card {
@@ -8,4 +8,13 @@
 
 .tech-stack-image {
     background-size: cover;    
+}
+
+.tech-image {
+    height: 15rem;
+    display: block;
+}
+
+.tech-stack__content {
+    height: 15em;
 }

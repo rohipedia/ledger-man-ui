@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { SnackBarService } from 'src/app/services/content/snack-bar.service';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authenticationService.login();
+    const copy = _.cloneDeep(this.loginForm);
+    console.log(copy);
+    this.authenticationService.login(this.loginForm.value);
   }
 
 }

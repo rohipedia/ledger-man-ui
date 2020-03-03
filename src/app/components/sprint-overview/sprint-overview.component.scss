@@ -1,9 +1,13 @@
-.overview {
-    
-}
-
-p:first-child::first-letter {
+div:first-child::first-letter {
     font-style: bold;
-    font-size: 30px;;
+    font-size: 30px;
 }
 
+.icon__edit {
+    cursor: pointer;
+    font-size: 150%;
+}
+
+.btn-update {
+    margin: 10px 0;
+}

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TeamStructureComponent } from './components/team-structure/team-structure.component';
@@ -9,16 +8,11 @@ import { SprintOverviewComponent } from './components/sprint-overview/sprint-ove
 import { AuthenticationService } from './services/authentication.service';
 import { TeamsService } from './services/teams/teams.service';
 import { GstToolsComponent } from './components/gst-tools/gst-tools.component';
-import { LandingComponent } from './components/landing/landing.component';
-import { RegisterComponent } from './components/register/register.component';
+import { NewsComponent } from './components/news/news.component';
+import { CourseComponent } from './components/tech-stack/course/course.component';
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'landing' },
-  { path: 'landing', component: LandingComponent, children: [
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent }
-  ] },
   { path: 'main', component: HomeComponent, canActivate: [AuthenticationService],
     children: [
       { path: 'dashboard', component: DashboardComponent },
@@ -29,7 +23,9 @@ const routes: Routes = [
         }
       },
       { path: 'tech-stack', component: TechStackComponent },
+      { path: 'tech-stack/:id', component: CourseComponent },
       { path: 'gst-tools', component: GstToolsComponent },
+      { path: 'news', component: NewsComponent },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
     ]
   }

@@ -1,19 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-
-import { OrganizationChartModule } from 'primeng/organizationchart';
-import { TreeModule } from 'primeng/tree';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule, MatInputModule, MatCardModule, MatMenuModule, MatIconModule } from '@angular/material';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { PrimengModule } from './modules/primeng.module';
+import { MaterialModule } from './modules/material.module';
+import { UserManagementModule } from './modules/user-management.module';
+
+import { AppComponent } from './app.component';
 
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -22,17 +19,13 @@ import { TeamStructureComponent } from './components/team-structure/team-structu
 import { TechStackComponent } from './components/tech-stack/tech-stack.component';
 import { SprintOverviewComponent } from './components/sprint-overview/sprint-overview.component';
 import { GstToolsComponent } from './components/gst-tools/gst-tools.component';
-import { LandingComponent } from './components/landing/landing.component';
-import { RegisterComponent } from './components/register/register.component';
-import { LandingBannersComponent } from './components/banners/landing-banners/landing-banners.component';
 import { MainBannersComponent } from './components/banners/main-banners/main-banners.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { HttpClientModule } from '@angular/common/http';
+import { NewsComponent } from './components/news/news.component';
+import { CourseComponent } from './components/tech-stack/course/course.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     HomeComponent,
     DashboardComponent,
     SidebarComponent,
@@ -40,11 +33,9 @@ import { HttpClientModule } from '@angular/common/http';
     TechStackComponent,
     SprintOverviewComponent,
     GstToolsComponent,
-    LandingComponent,
-    RegisterComponent,
-    LandingBannersComponent,
     MainBannersComponent,
-    ForgotPasswordComponent
+    NewsComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,
@@ -52,17 +43,10 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    OrganizationChartModule,
-    TreeModule,
-    MatFormFieldModule,
-    MatProgressBarModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatSnackBarModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule
+    FormsModule,
+    UserManagementModule,
+    MaterialModule,
+    PrimengModule
   ],
   providers: [],
   bootstrap: [AppComponent]

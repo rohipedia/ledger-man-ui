@@ -1,4 +1,5 @@
 export default [{
+    id: 1,
     name: "Angular JS",
     layer: "Front End",
     imageSrc: "https://i1.wp.com/storage.googleapis.com/blog-images-backup/1*GmMtKznzJ1dS8sSzxzR3ow.png?ssl=1",
@@ -7,6 +8,7 @@ export default [{
         (MVVM) architectures, along with components commonly used in rich Internet applications.`,
     logo: "https://www.dragonsocial.net/wp-content/uploads/2017/11/javascript-logo.jpg"
 }, {
+    id: 2,
     name: "Spring Boot",
     layer: "Activate Layer",
     imageSrc: "https://www.cignex.com/sites/default/files/spring-boot-1.jpg",
@@ -17,6 +19,7 @@ export default [{
         enables you to develop enterprise-ready applications that you can “just run”.`,
     logo: "https://www.dragonsocial.net/wp-content/uploads/2017/11/javascript-logo.jpg"
 }, {
+    id: 3,
     name: "MuleSoft",
     layer: "Integration Layer",
     imageSrc: "https://kodytechnolab.com/img/mobile-application-development-services-mule-indroduction.png",

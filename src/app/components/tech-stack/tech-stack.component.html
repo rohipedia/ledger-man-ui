@@ -3,16 +3,18 @@
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngFor="let tech of technologies">
             <mat-card class="tech-stack-card">
                 <mat-card-header>
-                    <div mat-card-avatar class="tech-stack-image" style="background-image: url({{tech.logo}});"></div>
+                    <!-- <div mat-card-avatar class="tech-stack-image" style="background-image: url({{tech.logo}});"></div> -->
                     <mat-card-title>{{ tech.name }}</mat-card-title>
                     <mat-card-subtitle>{{ tech.layer }}</mat-card-subtitle>
                 </mat-card-header>
-                <img mat-card-image src="{{tech.imageSrc}}" alt="JavaScript logo" style="height: 22rem;">
-                <mat-card-content>
+                <mat-card-content class="tech-stack__content">
+                    <!-- <img src="{{tech.imageSrc}}" class="tech-image" alt="JavaScript logo"> -->
                     <span>{{ tech.description }}</span>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-button>LEARN</button>
+                    <button
+                        mat-raised-button color="primary"
+                        (click)="startCourse(tech.id);">START</button>
                 </mat-card-actions>
             </mat-card>
         </div>

@@ -1,4 +1,5 @@
 export class Technology {
+  id: number;
   name: string;
   layer: string;
   imageSrc: string;

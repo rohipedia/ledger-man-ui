@@ -1,5 +1,5 @@
 .header {
-    width: 100%;
+    width: 100vw;
     height: 80px;
     margin-top: -16px;
     padding: 12px;
@@ -29,8 +29,8 @@
 }
 
 .options-menu {
-    margin-left: 66em;
-    margin-top: 1em;
+    margin-left: 95%;
+    margin-top: -40px;
 }
 
 *:focus {
