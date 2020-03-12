@@ -40,3 +40,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .route-links {
     font-size: 16px;
 }
+
+.sprint-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+  
+.sprint-radio-button {
+    margin: 5px;
+}

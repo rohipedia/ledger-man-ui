@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Technology } from 'src/app/models/technology.model';
-import { Router, ActivatedRoute, NavigationEnd, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TechnologyService } from 'src/app/services/technology/technology.service';
 
 @Component({

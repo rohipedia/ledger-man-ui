@@ -7,16 +7,22 @@ import { TechStackComponent } from './components/tech-stack/tech-stack.component
 import { SprintOverviewComponent } from './components/sprint-overview/sprint-overview.component';
 import { AuthenticationService } from './services/authentication.service';
 import { TeamsService } from './services/teams/teams.service';
-import { GstToolsComponent } from './components/gst-tools/gst-tools.component';
 import { NewsComponent } from './components/news/news.component';
+import { GstToolsComponent } from './components/gst-tools/gst-tools.component';
 import { CourseComponent } from './components/tech-stack/course/course.component';
+import { OverviewService } from './services/overview/overview.service';
+import { AssessmentComponent } from './components/progress/assessment/assessment.component';
 
 
 const routes: Routes = [
   { path: 'main', component: HomeComponent, canActivate: [AuthenticationService],
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'sprint-overview', component: SprintOverviewComponent },
+      { path: 'sprint-overview', component: SprintOverviewComponent,
+        resolve: {
+          overview: OverviewService
+        }
+      },
       { path: 'team-structure', component: TeamStructureComponent, 
         resolve: {
           teams: TeamsService
@@ -26,6 +32,7 @@ const routes: Routes = [
       { path: 'tech-stack/:id', component: CourseComponent },
       { path: 'gst-tools', component: GstToolsComponent },
       { path: 'news', component: NewsComponent },
+      { path: 'assessment', component: AssessmentComponent },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
     ]
   }

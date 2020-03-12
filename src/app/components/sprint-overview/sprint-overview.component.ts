@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OverviewService } from 'src/app/services/overview/overview.service';
+import { ActivatedRoute, Data } from '@angular/router';
+import { SnackBarService } from 'src/app/services/content/snack-bar.service';
 
 @Component({
   selector: 'app-sprint-overview',
@@ -8,39 +10,19 @@ import { OverviewService } from 'src/app/services/overview/overview.service';
 })
 export class SprintOverviewComponent implements OnInit {
 
-  public passages: string[] = [];
-  public overviews: Overview[] = [];
-  public overviewSingleText: string;
   public showEditor: boolean = false;
+  public overviewInnerHtml: string;
 
-  constructor(private overviewService: OverviewService) { }
+  constructor(
+    private overviewService: OverviewService,
+    private route: ActivatedRoute,
+    private snackbarService: SnackBarService
+  ) { }
 
   ngOnInit() {
-    this.passages = this.overviewService.getPassages();
-    this.createOverviewsMetadata();
-  }
-
-  private createOverviewsMetadata(): void {
-    this.overviews = this.passages.map((passage: string) => {
-      return {
-        edit: false,
-        passage: passage
-      }
+    this.route.data.subscribe((data: Data) => {
+      this.overviewInnerHtml = data.overview.context.entity.passage;
     });
-    let overviewSingleText = ''; 
-    this.overviews.forEach((overview: Overview) => {
-      overviewSingleText = overviewSingleText + '<p>' + overview.passage + '</p>';
-    });
-    this.overviewSingleText = `<div>${overviewSingleText}</div>`;
-  }
-
-  onEditPassage(i: number) {
-    this.overviews[i].edit = true;
-  }
-
-  onUpdatePassage(i: number) {
-    this.overviews[i].edit = false;
-    this.overviewService.updatePassage(i, this.overviews[i].passage);
   }
 
   onEditOverview() {
@@ -48,12 +30,12 @@ export class SprintOverviewComponent implements OnInit {
   }
 
   onUpdateOverview() {
-    this.showEditor = false;
+    this.overviewService.updateOverview(this.overviewInnerHtml).subscribe((response: any) => {
+      this.overviewInnerHtml = response.entity.passage;
+      this.showEditor = false;
+    }, (error) => {
+      this.snackbarService.openSnackbar("Save not successful");
+    });
   }
 
-}
-
-class Overview {
-  edit: boolean;
-  passage: string;
 }

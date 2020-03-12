@@ -1,38 +1,14 @@
+<!-- IMP: Side Menu items are to be added in component.ts file and not in this i.e. HTML file  -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion side-nav__custom" id="accordionSidebar">
-    <hr class="sidebar-divider my-0">
-    <li class="nav-item " (click)="routeToPage('dashboard', $event)">
-        <a class="nav-link" >
-            <span>Dashboard</span>
-        </a>
-    </li>
-    <hr class="sidebar-divider">
-    <div class="sidebar-heading sb-heading">
-        General
+    <div *ngFor="let type of types">
+        <div class="sidebar-heading sb-heading">
+            {{ type.type }}
+        </div>
+        <li class="nav-item" *ngFor="let menu of type.menuItems" (click)="routeToPage(menu.route, $event)">
+            <a class="nav-link">
+                <span>{{ menu.name }}</span>
+            </a>
+        </li>
+        <hr class="sidebar-divider">
     </div>
-    <li class="nav-item" (click)="routeToPage('sprint-overview', $event)">
-        <a class="nav-link">
-            <span>Sprint Overview</span>
-        </a>
-    </li>
-    <li class="nav-item" (click)="routeToPage('tech-stack')">
-        <a class="nav-link collapsed">
-            <span>Technology Stack</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" (click)="routeToPage('team-structure')">
-            <span>Team Structure</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" (click)="routeToPage('gst-tools')">
-            <span>GST Tools</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" (click)="routeToPage('news')">
-            <span>News</span>
-        </a>
-    </li>
-    <hr class="sidebar-divider">
 </ul>

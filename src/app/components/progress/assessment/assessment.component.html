@@ -1,0 +1,20 @@
+<mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="streamSelectionForm" [editable]="isEditable">
+        <ng-template matStepLabel>Choose your stream</ng-template>
+        <app-stream-selection [streamSelectionForm]="streamSelectionForm"></app-stream-selection>
+    </mat-step>
+    <mat-step [stepControl]="assessmentForm" [editable]="isEditable">
+        <ng-template matStepLabel>Start your assessment</ng-template>
+        <app-assessment-form 
+            [assessmentForm]="assessmentForm"
+            [selectedStream]="selectedStream"></app-assessment-form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

@@ -22,6 +22,14 @@ import { GstToolsComponent } from './components/gst-tools/gst-tools.component';
 import { MainBannersComponent } from './components/banners/main-banners/main-banners.component';
 import { NewsComponent } from './components/news/news.component';
 import { CourseComponent } from './components/tech-stack/course/course.component';
+import { AssessmentComponent } from './components/progress/assessment/assessment.component';
+import { StreamSelectionComponent } from './components/progress/stream-selection/stream-selection.component';
+
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+
+import { StoreModule } from '@ngrx/store';
+import { sprintReducer } from './store/sprint.reducer';
+import { AssessmentFormComponent } from './components/progress/assessment-form/assessment-form.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +43,11 @@ import { CourseComponent } from './components/tech-stack/course/course.component
     GstToolsComponent,
     MainBannersComponent,
     NewsComponent,
-    CourseComponent
+    CourseComponent,
+    SafeHtmlPipe,
+    AssessmentComponent,
+    StreamSelectionComponent,
+    AssessmentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +58,8 @@ import { CourseComponent } from './components/tech-stack/course/course.component
     FormsModule,
     UserManagementModule,
     MaterialModule,
-    PrimengModule
+    PrimengModule,
+    StoreModule.forRoot({sprint: sprintReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -17,10 +17,10 @@
             </div>
         </ng-template>
     </div> -->
-    <div [innerHtml]="overviewSingleText"></div>
+    <div [innerHtml]="overviewInnerHtml | safeHtml"></div>
 </div>
 <div *ngIf="showEditor">
-    <p-editor [(ngModel)]="overviewSingleText" [style]="{'height':'320px'}"></p-editor>
+    <p-editor [(ngModel)]="overviewInnerHtml" [style]="{'height':'320px'}"></p-editor>
     <br>
     <button class="float-right" mat-raised-button color="primary" (click)="onUpdateOverview()">
         UPDATE

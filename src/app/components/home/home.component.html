@@ -1,33 +1,33 @@
 <div class="">
-    <header class="header row col-12">
+    <header class="header row">
         <div class="">
             <img class="main-header__logo"
                 [src]="sprintUrl"
                 alt="">
             <h2 class="col-4 header--title"></h2>
-            <div class="options-menu" >
-                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                    <span class="options-icon"><mat-icon>more_vert</mat-icon></span>
-                  </button>
-                  <mat-menu  #menu="matMenu">
-                    <button mat-menu-item>
-                      <mat-icon>person</mat-icon>
-                      <span>Profile</span>
-                    </button>
-                    <button mat-menu-item disabled>
-                      <mat-icon>mood</mat-icon>
-                      <span>Feedback</span>
-                    </button>
-                    <button mat-menu-item>
-                        <mat-icon>notifications</mat-icon>
-                        <span>Notifications</span>
-                      </button>
-                    <button mat-menu-item (click)="logout()">
-                      <mat-icon>directions_run</mat-icon>
-                      <span>Logout</span>
-                    </button>
-                  </mat-menu>
-            </div>
+          </div>
+          <div class="options-menu float-right" >
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <span class="options-icon"><mat-icon>more_vert</mat-icon></span>
+            </button>
+            <mat-menu  #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>person</mat-icon>
+                <span>Profile</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>mood</mat-icon>
+                <span>Feedback</span>
+              </button>
+              <button mat-menu-item>
+                  <mat-icon>notifications</mat-icon>
+                  <span>Notifications</span>
+                </button>
+              <button mat-menu-item (click)="logout()">
+                <mat-icon>directions_run</mat-icon>
+                <span>Logout</span>
+              </button>
+            </mat-menu>
         </div>
     </header>
     <div id="wrapper">
