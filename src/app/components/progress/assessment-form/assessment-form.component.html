@@ -1,21 +1,27 @@
-<form [formGroup]="assessmentForm">
-    <div formArrayName="sets">
-        <div *ngFor="let set of assessmentForm.get('sets').controls; let i = index" [formGroupName]="i">
-            {{ assessmentForm.value.sets[i].question }}
-            <mat-radio-group aria-labelledby="sprint-radio-group-label"
-                    formArrayName="answers"
+<div>
+    <div *ngFor="let set of questionSets; let i = index">
+        ({{ set.serial }}) {{ set.question }}
+        <mat-radio-group
+                    aria-labelledby="sprint-radio-group-label"
+                    [ngModel]="set.selectedAnswer"
+                    (ngModelChange)="onAnswerSelection(set, $event)"
                     class="sprint-radio-group">
                 <mat-radio-button
-                        class="sprint-radio-button col-6" 
-                        *ngFor="let ans of set.get('answers').controls; let in = index" 
-                        [formGroupName]="in" [value]="ans.option">
-                    {{ assessmentForm.value.sets[i].answers[in].label }}
-                </mat-radio-button>
-            </mat-radio-group>
-        </div>
+                    [disabled]="submitted"
+                    class="sprint-radio-button" 
+                    *ngFor="let ans of set.answers; let in = index" 
+                    [value]="ans.option">
+                {{ ans.label }}
+                <span *ngIf="submitted && ans.option === set.selectedAnswer" class="result-icon">
+                    <i *ngIf="set.isCorrect" class="material-icons" style="color: green;">check</i>
+                    <i *ngIf="!set.isCorrect" class="material-icons"  style="color: red;">close</i>
+                </span>
+            </mat-radio-button>
+        </mat-radio-group>
     </div>
-    <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-    </div>
-</form>
+</div>
+<div>
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button *ngIf="!submitted" (click)="submit()">Submit</button>
+    <button mat-button *ngIf="submitted" matStepperNext>Next</button>
+</div>

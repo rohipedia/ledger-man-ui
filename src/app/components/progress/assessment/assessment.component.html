@@ -3,10 +3,9 @@
         <ng-template matStepLabel>Choose your stream</ng-template>
         <app-stream-selection [streamSelectionForm]="streamSelectionForm"></app-stream-selection>
     </mat-step>
-    <mat-step [stepControl]="assessmentForm" [editable]="isEditable">
+    <mat-step [editable]="isEditable">
         <ng-template matStepLabel>Start your assessment</ng-template>
         <app-assessment-form 
-            [assessmentForm]="assessmentForm"
             [selectedStream]="selectedStream"></app-assessment-form>
     </mat-step>
     <mat-step>

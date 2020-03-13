@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+
+import { QuestionSet, QuestionAnswerPairs } from './../../../models/assessment.model';
 import sets from './../../../stubs/questions.stubs.js';
 
 @Component({
@@ -9,45 +10,34 @@ import sets from './../../../stubs/questions.stubs.js';
 })
 export class AssessmentFormComponent implements OnInit {
 
-  @Input('assessmentForm') assessmentForm: FormGroup;
   @Input('selectedStream') selectedStream: string;
 
   questionSets: QuestionSet[] = sets;
+  answersCopy: QuestionAnswerPairs[] = [];
+  submitted: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
-    this.initSets();
-    
+    this.answersCopy = this.questionSets.map((set: QuestionSet) => {
+      set.selectedAnswer = null;
+      return {
+        serial: set.serial,
+        correctAnswer: set.correctAnswer
+      }
+    });
   }
 
-  initSets() {
-    let sets = new FormArray([]);
-    this.questionSets.forEach((questionSet: QuestionSet) => {
-      let answers = new FormArray([]);
-      questionSet.answers.forEach(answer => {
-        answers.push(
-          new FormControl(answer)
-        );
-      });
-      sets.push(
-        new FormGroup({
-          'question': new FormControl(questionSet.question, null),
-          'answers': answers
-        })
-      )
-    });
-    this.assessmentForm = new FormGroup({
-      'sets': sets
-    });
-    console.log(this.assessmentForm);
+  onAnswerSelection(set: QuestionSet, event: number): void {
+    set.selectedAnswer = event;
   }
 
-}
+  submit(): void {
+    this.questionSets.forEach((set: QuestionSet) => {
+      const correctAns = this.answersCopy.find((el: QuestionAnswerPairs) => el.serial === set.serial).correctAnswer;
+      set.isCorrect = (correctAns === set.selectedAnswer);
+    });
+    this.submitted = true;
+  }
 
-class QuestionSet {
-  serial: number;
-  question: string;
-  answers: any[];
-  answer: number;
 }

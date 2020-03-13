@@ -18,7 +18,9 @@ export class AssessmentComponent implements OnInit {
 
   ngOnInit() {
     this.store.select('sprint').subscribe((data: any) => {
-      this.selectedStream = data.evaluationStream;
+      if (data) {
+        this.selectedStream = data.evaluationStream;
+      }
     })
   }
 
