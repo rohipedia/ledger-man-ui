@@ -1,7 +1,9 @@
 import * as sprintAction from './sprint.action';
 
 const initialState = {
-    evaluationStream: ''
+    evaluationStream: '',
+    evaluationSubmitted: false,
+    questionSets: null
 }
 
 export function sprintReducer(state = initialState, action: sprintAction.allActions) {
@@ -10,6 +12,12 @@ export function sprintReducer(state = initialState, action: sprintAction.allActi
             return {
                 ...state,
                 evaluationStream: action.payload
+            }
+        case sprintAction.SUBMIT_EVALUATION:
+            return {
+                ...state,
+                evaluationSubmitted: true,
+                questionSets: action.payload
             }
     }
 }

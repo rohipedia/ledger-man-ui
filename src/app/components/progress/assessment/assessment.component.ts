@@ -12,16 +12,21 @@ export class AssessmentComponent implements OnInit {
   streamSelectionForm: FormGroup;
   assessmentForm: FormGroup;
   selectedStream: string;
-  isEditable = false;
+  isEditable: boolean = false;
 
   constructor(private store: Store<{sprint: any}>) {}
 
   ngOnInit() {
+    this.checkSubscriptions();
+    
+  }
+
+  checkSubscriptions(): void {
     this.store.select('sprint').subscribe((data: any) => {
       if (data) {
         this.selectedStream = data.evaluationStream;
       }
-    })
+    });
   }
 
 }

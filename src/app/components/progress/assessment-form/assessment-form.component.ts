@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import { QuestionSet, QuestionAnswerPairs } from './../../../models/assessment.model';
+import * as sprintActions from '../../../store/sprint.action';
 import sets from './../../../stubs/questions.stubs.js';
 
 @Component({
@@ -16,16 +18,16 @@ export class AssessmentFormComponent implements OnInit {
   answersCopy: QuestionAnswerPairs[] = [];
   submitted: boolean = false;
 
-  constructor() { }
+  constructor(private store: Store<{sprint: any}>) { }
 
   ngOnInit() {
     this.answersCopy = this.questionSets.map((set: QuestionSet) => {
-      set.selectedAnswer = null;
       return {
         serial: set.serial,
         correctAnswer: set.correctAnswer
       }
     });
+    this.checkSubscriptions();
   }
 
   onAnswerSelection(set: QuestionSet, event: number): void {
@@ -38,6 +40,16 @@ export class AssessmentFormComponent implements OnInit {
       set.isCorrect = (correctAns === set.selectedAnswer);
     });
     this.submitted = true;
+    this.store.dispatch(new sprintActions.SubmitEvaluation(this.questionSets));
+  }
+
+  checkSubscriptions() {
+    this.store.select('sprint').subscribe((data: any) => {
+      if (data && data.questionSets) {
+        this.submitted = data.evaluationSubmitted;
+        this.questionSets = data.questionSets;
+      }
+    });
   }
 
 }
