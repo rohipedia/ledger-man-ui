@@ -13,12 +13,12 @@ export class TechnologyService {
     this.technologies = stubTechnologies;
   }
 
-  public getTechnologies(): Technology[] {
-    return this.technologies;
-  }
-
   public getTechnology(id: number): Technology {
     const technology = this.technologies.find((tech: Technology) => tech.id === id);
-    return {...technology};
+    return { ...technology };
+  }
+
+  public getTechnologies(): Technology[] {
+    return this.technologies;
   }
 }

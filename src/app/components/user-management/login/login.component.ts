@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { SnackBarService } from 'src/app/services/content/snack-bar.service';
 import _ from 'lodash';
 
 @Component({
@@ -14,11 +12,9 @@ export class LoginComponent implements OnInit {
 
   public sprintUrl: string = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Logo_of_Sprint_Nextel.svg/1200px-Logo_of_Sprint_Nextel.svg.png';
   public loginForm: FormGroup;
+  @ViewChild('passwordInput', {static: false}) passwordInput: ElementRef;
 
-  constructor(private router: Router,
-    private authenticationService: AuthenticationService,
-    private snackbarService: SnackBarService
-    ) { }
+  constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -28,8 +24,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log(this.passwordInput);
     const copy = _.cloneDeep(this.loginForm);
-    console.log(copy);
     this.authenticationService.login(this.loginForm.value);
   }
 

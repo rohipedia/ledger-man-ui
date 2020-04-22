@@ -1,19 +1,31 @@
 <mat-horizontal-stepper linear #stepper>
-    <mat-step [stepControl]="streamSelectionForm" [editable]="isEditable">
-        <ng-template matStepLabel>Choose your stream</ng-template>
-        <app-stream-selection [streamSelectionForm]="streamSelectionForm"></app-stream-selection>
-    </mat-step>
+    <div *ngIf="showStreamSelection">
+        <mat-step [stepControl]="streamSelectionForm" [editable]="isEditable">
+            <ng-template matStepLabel>Choose your stream</ng-template>
+            <app-stream-selection [streamSelectionForm]="streamSelectionForm"></app-stream-selection>
+        </mat-step>
+    </div>
     <mat-step [editable]="isEditable">
-        <ng-template matStepLabel>Start your assessment</ng-template>
-        <app-assessment-form 
-            [selectedStream]="selectedStream"></app-assessment-form>
+        <app-assessment-form [selectedStream]="selectedStream">
+            <ng-template #label matStepLabel>Start your assessment</ng-template>
+        </app-assessment-form>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Report</ng-template>
-        <p>Report Card:</p>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
+        <br>
+        <div class="card text-center">
+            <div class="card-header">
+                Report Card
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Assessed Stream : {{ selectedStream }}</h5>
+              <p class="card-text">Questions Attempted: 2</p>
+              <p class="card-text">Correct Answers: 2</p>
+              <button mat-raised-button color="primary" >Print Report</button>
+            </div>
+            <div class="card-footer text-muted">
+              just now
+            </div>
+          </div>
     </mat-step>
 </mat-horizontal-stepper>

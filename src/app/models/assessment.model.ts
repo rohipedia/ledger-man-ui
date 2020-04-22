@@ -5,6 +5,7 @@ export class QuestionSet {
     correctAnswer: number;
     selectedAnswer: number;
     isCorrect: boolean;
+    stream: string;
 }
 
 export class QuestionAnswerPairs {

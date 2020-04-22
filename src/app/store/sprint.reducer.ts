@@ -1,9 +1,10 @@
 import * as sprintAction from './sprint.action';
 
 const initialState = {
+    isAdmin: false,
     evaluationStream: '',
     evaluationSubmitted: false,
-    questionSets: null
+    questionSets: []
 }
 
 export function sprintReducer(state = initialState, action: sprintAction.allActions) {
@@ -18,6 +19,11 @@ export function sprintReducer(state = initialState, action: sprintAction.allActi
                 ...state,
                 evaluationSubmitted: true,
                 questionSets: action.payload
+            }
+        case sprintAction.ADD_BULK_QUESTIONS:
+            return {
+                ...state,
+                questionSets: [...state.questionSets, ...action.payload]
             }
     }
 }

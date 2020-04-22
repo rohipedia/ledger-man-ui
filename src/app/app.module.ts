@@ -2,15 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { StoreModule } from '@ngrx/store';
+import { AbilityModule } from '@casl/angular';
+import { PureAbility } from '@casl/ability';
+import { createAbility, AppAbility } from '../app/services/ability/ability.service';
 
 import { PrimengModule } from './modules/primeng.module';
 import { MaterialModule } from './modules/material.module';
 import { UserManagementModule } from './modules/user-management.module';
 
 import { AppComponent } from './app.component';
+
 
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -27,9 +32,9 @@ import { StreamSelectionComponent } from './components/progress/stream-selection
 
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
-import { StoreModule } from '@ngrx/store';
 import { sprintReducer } from './store/sprint.reducer';
 import { AssessmentFormComponent } from './components/progress/assessment-form/assessment-form.component';
+import { QuestionsComponent } from './components/progress/assessment-form/questions/questions.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +52,8 @@ import { AssessmentFormComponent } from './components/progress/assessment-form/a
     SafeHtmlPipe,
     AssessmentComponent,
     StreamSelectionComponent,
-    AssessmentFormComponent
+    AssessmentFormComponent,
+    QuestionsComponent
   ],
   imports: [
     BrowserModule,
@@ -59,9 +65,13 @@ import { AssessmentFormComponent } from './components/progress/assessment-form/a
     UserManagementModule,
     MaterialModule,
     PrimengModule,
+    AbilityModule,
     StoreModule.forRoot({sprint: sprintReducer})
   ],
-  providers: [],
+  providers: [
+    { provide: PureAbility, useExisting: AppAbility },
+    { provide: AppAbility, useFactory: createAbility }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

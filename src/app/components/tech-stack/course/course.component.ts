@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TechnologyService } from 'src/app/services/technology/technology.service';
 
 @Component({
@@ -9,7 +9,9 @@ import { TechnologyService } from 'src/app/services/technology/technology.servic
 })
 export class CourseComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private techService: TechnologyService) { }
+  constructor(private route: ActivatedRoute,
+    private techService: TechnologyService,
+    private router: Router) { }
   private id: number;
   private technology: any;
 
@@ -19,6 +21,10 @@ export class CourseComponent implements OnInit {
       this.technology = this.techService.getTechnology(this.id);
       console.log(this.technology);
     });
+  }
+
+  onTakeAssessment(): void {
+    this.router.navigate(['/main', 'assessment']);
   }
 
 }

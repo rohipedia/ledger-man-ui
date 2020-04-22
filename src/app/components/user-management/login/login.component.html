@@ -7,7 +7,7 @@
                     <input matInput formControlName="email" placeholder="E-mail ID" type="email">
                 </mat-form-field>
                 <mat-form-field class="login-form__field">
-                    <input matInput formControlName="password" placeholder="Password" type="password">
+                    <input #passwordInput matInput formControlName="password" placeholder="Password" type="password">
                 </mat-form-field>
                 <button class="login-form__button" [disabled]="!loginForm.valid" mat-raised-button color="primary"
                     type="submit">

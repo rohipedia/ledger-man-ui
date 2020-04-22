@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnChanges } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { SnackBarService } from 'src/app/services/content/snack-bar.service';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss']
+  styleUrls: ['./landing.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LandingComponent implements OnInit {
 
   public sprintUrl: string = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Logo_of_Sprint_Nextel.svg/1200px-Logo_of_Sprint_Nextel.svg.png';
   public isOptionSelected: boolean = false;
-  constructor(private router: Router, private snackbarService: SnackBarService) { }
+  constructor(private router: Router, private snackbarService: SnackBarService) {}
 
   ngOnInit() {
     this.handleRouting();

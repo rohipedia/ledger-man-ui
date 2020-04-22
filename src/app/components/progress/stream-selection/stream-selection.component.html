@@ -1,7 +1,8 @@
+<ng-content></ng-content>
 <form [formGroup]="streamSelectionForm">
     <label id="sprint-radio-group-label">Pick the stream that you want to assess yourself on</label>
-    <mat-radio-group [disabled]="selected" aria-labelledby="sprint-radio-group-label" formControlName="stream" class="sprint-radio-group">
-        <mat-radio-button class="sprint-radio-button" *ngFor="let str of streams" [value]="str">
+    <mat-radio-group aria-labelledby="sprint-radio-group-label" formControlName="stream" class="sprint-radio-group">
+        <mat-radio-button [disabled]="selected"  class="sprint-radio-button" *ngFor="let str of streams" [value]="str">
             {{ str }}
         </mat-radio-button>
     </mat-radio-group>

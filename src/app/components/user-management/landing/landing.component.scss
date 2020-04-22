@@ -17,3 +17,23 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+
+.login-form {
+    float: right;
+}
+
+.login-form__field {
+    width: 100%;
+}
+
+.login-form__button {
+    float: right;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 16px;
+    margin: 12px;
+}

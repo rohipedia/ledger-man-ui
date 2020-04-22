@@ -1,16 +1,15 @@
 <div class="">
     <header class="header row">
         <div class="">
-            <img class="main-header__logo"
-                [src]="sprintUrl"
-                alt="">
+            <img class="main-header__logo" [src]="sprintUrl" alt="">
             <h2 class="col-4 header--title"></h2>
           </div>
           <div class="options-menu float-right" >
-            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <button mat-icon-button [matMenuTriggerFor]="menu"
+                *ngIf="'any' | can: 'manage'" aria-label="Example icon-button with a menu">
               <span class="options-icon"><mat-icon>more_vert</mat-icon></span>
             </button>
-            <mat-menu  #menu="matMenu">
+            <mat-menu #menu="matMenu">
               <button mat-menu-item>
                 <mat-icon>person</mat-icon>
                 <span>Profile</span>

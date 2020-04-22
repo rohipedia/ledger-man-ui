@@ -1,25 +1,51 @@
+<ng-content></ng-content>
 <div>
-    <div *ngFor="let set of questionSets; let i = index">
-        ({{ set.serial }}) {{ set.question }}
-        <mat-radio-group
-                    aria-labelledby="sprint-radio-group-label"
-                    [ngModel]="set.selectedAnswer"
-                    (ngModelChange)="onAnswerSelection(set, $event)"
-                    class="sprint-radio-group">
-                <mat-radio-button
-                    [disabled]="submitted"
-                    class="sprint-radio-button" 
-                    *ngFor="let ans of set.answers; let in = index" 
-                    [value]="ans.option">
-                {{ ans.label }}
-                <span *ngIf="submitted && ans.option === set.selectedAnswer" class="result-icon">
-                    <i *ngIf="set.isCorrect" class="material-icons" style="color: green;">check</i>
-                    <i *ngIf="!set.isCorrect" class="material-icons"  style="color: red;">close</i>
-                </span>
-            </mat-radio-button>
-        </mat-radio-group>
+    <div class="float-right">
+        <i class="material-icons add-icon" *ngIf="!showAddQuestionForm"
+            (click)="addQuestionSets()"
+            matTooltip="Add Question Sets">
+            add
+        </i>
+        
+        <i class="material-icons add-icon" *ngIf="showAddQuestionForm"
+            (click)="downloadTemplate()"
+            matTooltip="Download Template">
+            attachment
+        </i>
+        <i class="material-icons add-icon" *ngIf="showAddQuestionForm"
+            (click)="addQuestionSets()"
+            matTooltip="Show Questions">
+            list
+        </i>
     </div>
+    <div *ngIf="showAddQuestionForm; else showQuestionSets">
+        <app-questions></app-questions>
+    </div>
+    <ng-template #showQuestionSets>
+        <div *ngFor="let set of questionSets; let i = index">
+            ({{ set.serial }}) {{ set.question }}
+            <mat-radio-group
+                        aria-labelledby="sprint-radio-group-label"
+                        [ngModel]="set.selectedAnswer"
+                        (ngModelChange)="onAnswerSelection(set, $event)"
+                        class="sprint-radio-group">
+                    <mat-radio-button
+                        [disabled]="submitted"
+                        class="sprint-radio-button" 
+                        *ngFor="let ans of set.answers; let in = index" 
+                        [value]="ans.option">
+                        {{ ans.label }}
+                    <span *ngIf="submitted && ans.option === set.selectedAnswer" class="result-icon">
+                        <i *ngIf="set.isCorrect" class="material-icons" style="color: green;">check</i>
+                        <i *ngIf="!set.isCorrect" class="material-icons" style="color: red;">close</i>
+                    </span>
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </ng-template>
+
 </div>
+
 <div>
     <button mat-button matStepperPrevious>Back</button>
     <button mat-button *ngIf="!submitted" (click)="submit()">Submit</button>

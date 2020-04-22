@@ -5,7 +5,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatStepperModule } from '@angular/material/stepper';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
     declarations: [],
     imports: [
@@ -19,7 +19,8 @@ import { MatStepperModule } from '@angular/material/stepper';
         MatMenuModule,
         MatIconModule,
         MatStepperModule,
-        MatRadioModule
+        MatRadioModule,
+        MatTooltipModule
     ],
     exports: [
         MatFormFieldModule,

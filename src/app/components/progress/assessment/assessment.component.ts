@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -9,16 +9,16 @@ import { Store } from '@ngrx/store';
 })
 export class AssessmentComponent implements OnInit {
 
-  streamSelectionForm: FormGroup;
-  assessmentForm: FormGroup;
-  selectedStream: string;
-  isEditable: boolean = false;
+  public streamSelectionForm: FormGroup;
+  public assessmentForm: FormGroup;
+  public selectedStream: string;
+  public isEditable: boolean = false;
+  public showStreamSelection: boolean = true;
 
   constructor(private store: Store<{sprint: any}>) {}
 
   ngOnInit() {
     this.checkSubscriptions();
-    
   }
 
   checkSubscriptions(): void {

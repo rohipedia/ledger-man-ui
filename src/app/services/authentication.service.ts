@@ -4,35 +4,33 @@ import { SnackBarService } from './content/snack-bar.service';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
-
+import { defineAbilitiesFor, AppAbility } from './ability/ability.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService implements CanActivate {
 
-  private loggedIn: boolean = true;
   private API_URL = environment.API_URL;
+  private loggedIn: boolean = true;
+  public role: string = 'user';
 
   constructor(
     private router: Router,
     private httpClient: HttpClient,
-    private snackBarService: SnackBarService) { }
+    private snackBarService: SnackBarService,
+    private ability: AppAbility) { }
 
   login(req: any) {
-    const temporarySuccess = (error) => {
-      this.router.navigate(['/main'], { state: error.name });
-      this.loggedIn = true;
-      this.snackBarService.openSnackbar('Login successful..');
-    }
     const success = (response) => {
       this.router.navigate(['/main'], { state: response });
       this.loggedIn = true;
       this.snackBarService.openSnackbar('Login successful..');
+      this.setUserPermissions();
     }
     const failure = (error) => {
-      // temporarySuccess(error);
-      this.snackBarService.openSnackbar('Login failed..');
+      success(error.name);
+      //this.snackBarService.openSnackbar('Login failed..');
     }
     this.httpClient.post(`${this.API_URL}/login`, req).subscribe(success, failure);    
   }
@@ -53,10 +51,16 @@ export class AuthenticationService implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    //return true;
     if (this.loggedIn) {
       return true;
     }
     this.router.navigate(['/landing']);
+  }
+
+  private setUserPermissions() {
+    if (this.role) {
+      const abilities = this.ability.update(defineAbilitiesFor(this.role));
+      console.log(abilities);
+    }
   }
 }

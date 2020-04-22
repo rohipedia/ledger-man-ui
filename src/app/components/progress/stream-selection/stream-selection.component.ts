@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as sprintAction from './../../../store/sprint.action';
@@ -18,7 +18,7 @@ export class StreamSelectionComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private store: Store<{ sprint: any }>
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.streamSelectionForm = this._formBuilder.group({
@@ -42,5 +42,4 @@ export class StreamSelectionComponent implements OnInit {
       }
     });
   }
-
 }
